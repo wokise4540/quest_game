@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %} История {% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-8 mx-auto">
+            <h1 class="text-center my-3">{{ story.title }}</h1>
+            <p class="text-justify">{{ question }}</p>
+            {% for answer in answers %}
+                <a class="btn btn-outline-primary btn-block" href="{% url 'story_progress' story_id=story.id story_step=answer.redir %}">
+                    {{ answer.text }}
+                </a>
+            {% endfor %}
+            <p class="text-right">
+                <a href="{% url 'story_homepage' story_id=story.id %}">C начала</a>
+            </p>
+        </div>
+    </div>
+
+{% endblock %}
